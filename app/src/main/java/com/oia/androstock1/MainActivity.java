@@ -92,6 +92,20 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+
+        /**
+         * Button Memory Listener
+         */
+        btnSDCard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                count = 0;
+                pathHistory = new ArrayList<String>();
+                pathHistory.add(count,System.getenv("EXTERNAL_STORAGE"));
+                Log.d(TAG, "btnSDCard: " + pathHistory.get(count));
+                checkInternalStorage();
+            }
+        });
     }
 
     private void readExcelData(String filePath) {
