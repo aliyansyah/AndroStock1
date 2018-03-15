@@ -75,6 +75,37 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+
+        /**
+         * Button Back Listener
+         */
+        btnUpDirectory.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(count == 0){
+                    Log.d(TAG, "btnUpDirectory: You have reached the highest level directory.");
+                }else{
+                    pathHistory.remove(count);
+                    count--;
+                    checkInternalStorage();
+                    Log.d(TAG, "btnUpDirectory: " + pathHistory.get(count));
+                }
+            }
+        });
+
+        /**
+         * Button Memory Listener
+         */
+        btnSDCard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                count = 0;
+                pathHistory = new ArrayList<String>();
+                pathHistory.add(count,System.getenv("EXTERNAL_STORAGE"));
+                Log.d(TAG, "btnSDCard: " + pathHistory.get(count));
+                checkInternalStorage();
+            }
+        });
     }
 
     private void readExcelData(String filePath) {
