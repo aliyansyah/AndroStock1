@@ -75,6 +75,23 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+
+        /**
+         * Button Back Listener
+         */
+        btnUpDirectory.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(count == 0){
+                    Log.d(TAG, "btnUpDirectory: You have reached the highest level directory.");
+                }else{
+                    pathHistory.remove(count);
+                    count--;
+                    checkInternalStorage();
+                    Log.d(TAG, "btnUpDirectory: " + pathHistory.get(count));
+                }
+            }
+        });
     }
 
     private void readExcelData(String filePath) {
